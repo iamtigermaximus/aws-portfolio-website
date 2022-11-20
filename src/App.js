@@ -1,34 +1,19 @@
-//import styled from 'styled-components'
-import '@aws-amplify/ui-react/styles.css'
-import {
-  withAuthenticator,
-  Button,
-  Heading,
-  View,
-  Card,
-} from '@aws-amplify/ui-react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import CreateProject from './pages/CreateProjects'
+import Home from './pages/Home'
 
-// const Container = styled.div`
-//   width: 100%;
-//   height: 100vh;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background: pink;
-// `
-// const Heading1 = styled.h1`
-//   fonst-size: 50px;
-// `
-
-function App({ signOut }) {
+function App() {
   return (
-    <View className='App'>
-      <Card>
-        <Heading level={1}>We now have Auth!</Heading>
-      </Card>
-      <Button onClick={signOut}>Sign Out</Button>
-    </View>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+
+          <Route path='/create-projects' element={<CreateProject />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   )
 }
 
-export default withAuthenticator(App)
+export default App
